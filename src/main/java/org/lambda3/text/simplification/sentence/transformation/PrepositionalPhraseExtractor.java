@@ -925,7 +925,7 @@ public class PrepositionalPhraseExtractor {
 
 
     /**
-     * extracts selected prepositional phrases representing the last one in the input from the input sentence and transforms them into stand-alone context sentences,
+     * extracts additional selected prepositional phrases representing the last one in the input from the input sentence and transforms them into stand-alone context sentences,
      * returns true if such a prepositional phrase was found in the input sentence
      *
      * @param coreContextSentence
@@ -978,7 +978,7 @@ public class PrepositionalPhraseExtractor {
             }
         }
 
-        if (tree.size() > 0) {
+        if (tree.size() > 1) { // changed from 0 to 1 (to retain one prepositional phrase)
             String pp = SentenceUtils.listToString(tree.get(tree.size() - 1).yield());
             String[] ppTokens = pp.split(" ");
             String tagged = RepresentationGenerator.posTag(pp);
